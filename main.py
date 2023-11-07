@@ -103,6 +103,7 @@ def add_item(item: Item) -> dict[str, Item]:
 # @app.put("/update/{item_id}")
 @app.put("/items/{item_id}")
 # can also call /items/{item_id}
+
 def update(
     item_id: int, 
     name: Optional[str] = None,
@@ -116,6 +117,16 @@ def update(
         HTTPException(status_code=404, detail=f"Item with {item_id} not found")
     if all(info is None for  info in (name, price, count)):
         raise HTTPException(status_code=400, detail="No parameters provided for update.")
+    
+    item = items[item_id]
+    if name is not None: 
+        item.name = name
+    if price is not None: 
+        item.price = price
+    if count is not None: 
+        item.count = count
+        
+    return  {"updated": item}
     
 @app.delete("/delete/{item_id}")
 # can also call /items/{item_id}
