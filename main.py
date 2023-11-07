@@ -71,6 +71,8 @@ def query_item_by_parameters(
             )
         )
     selection = [item for item in items.values() if check_item(item)]
+    print("testing print")
+    # raise ValueError("testing valueError")
     return {
         "query": {"name": name, "price": price, "count": count, "category": category, "selection": selection, 
         }
@@ -84,7 +86,12 @@ def add_item(item: Item) -> dict[str, Item]:
         HTTPException(status_code=400, detail=f"Item with {item.id} already exists")    
     
     # this adds items   
-    item[item.id] = item
+    # print("items[item.id]", items[item.id])
+    # print(items)
+    # raise KeyError("items:", items)
+    # raise ValueError("items", items)
+    items[item.id] = item
+    # item[item.id] = item
     return {"added": item}
     
    

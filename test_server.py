@@ -1,25 +1,18 @@
 import requests
-# print(requests.get("http://127.0.0.1:8000/").json())
+print(requests.get("http://127.0.0.1:8000/").json())
 # print(requests.get("http://127.0.0.1:8000/items/0").json())
 # print(requests.get("http://127.0.0.1:8000/items?name=Nails").json())
 
-# # ! this is not working 
+# # ! this is working
 # print("***Adding an item:***")
 
 print(
     requests.post(
     "http://127.0.0.1:8000/", 
-    json={"name": "Screwdriver", "price": 3.99, "count": 10, "id": 4, "category": "tools"}
+    json={"name": "Screwdriver", "price": 3.99, "count": 10, "id": 3, "category": "tools"}
     ).json()
 )
 
-
-# print(
-#     requests.post(
-#     "http://127.0.0.1:8000/", 
-#     json=[{'name': 'Screwdriver', 'price': 3.99, 'count': 10, 'id': 4, 'category': 'tools'}]
-#     ).json()
-# )
 
 
 # print("***Updating an item:***")
@@ -31,5 +24,5 @@ print(
 
 # print("***Deleting an item:***")
 
-# print(requests.put("http://127.0.0.1:8000/items/0").json())
+# print(requests.put("http://127.0.0.1:8000/items/3").json())
 # print(requests.get("http://127.0.0.1:8000/").json())
